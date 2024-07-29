@@ -1,0 +1,20 @@
+services:
+  tt-tg:
+    build: .
+    environment:
+      - TT_TG_API_TG
+      - TT_TG_API_TT
+      - TT_TG_CONFIG=config/config.yaml
+      - TT_TG_POLL_RATE=480
+    volumes:
+      - ./config:/app/config
+    network_mode: host
+    restart: always
+    deploy:
+      resources:
+        limits: 
+          cpus: 4.00
+          memory: 2G
+        reservations:
+          cpus: 0.5
+          memory: 256MB
